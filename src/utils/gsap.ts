@@ -39,7 +39,6 @@ function cardsAnim() {
     rotationY: 90,
     duration: 2,
     ease: 'linear',
-    transformPerspective: 1000,
     transformOrigin: 'center',
     stagger: 1,
   });
@@ -55,7 +54,6 @@ function cardsAnim() {
     rotationY: 0,
     duration: 2,
     ease: 'linear',
-    transformPerspective: 1000,
     transformOrigin: 'center',
     stagger: 0,
   });
