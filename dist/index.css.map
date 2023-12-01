@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/index.css"],
+  "sourcesContent": ["/* navbar state */\n.navbar-top_icon {\n    opacity : 0 ;\n}\n\n.navbar-top_link:hover .navbar-top_icon {\n    opacity: 0.5;\n}\n\n.navbar-top_link.w-inline-block.w--current {\n    opacity: 1;\n}\n.navbar-top_link.w-inline-block.w--current .navbar-top_icon {\n    opacity: 1;\n}"],
+  "mappings": ";AACA,CAAC;AACG,WAAU;AACd;AAEA,CAAC,eAAe,OAAO,CAJtB;AAKG,WAAS;AACb;AAEA,CAJC,eAIe,CAAC,cAAc,CAAC;AAC5B,WAAS;AACb;AACA,CAPC,eAOe,CAHC,cAGc,CAHC,WAGW,CAX1C;AAYG,WAAS;AACb;",
+  "names": []
+}

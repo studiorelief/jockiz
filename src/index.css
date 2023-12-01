@@ -1,0 +1,15 @@
+/* navbar state */
+.navbar-top_icon {
+    opacity : 0 ;
+}
+
+.navbar-top_link:hover .navbar-top_icon {
+    opacity: 0.5;
+}
+
+.navbar-top_link.w-inline-block.w--current {
+    opacity: 1;
+}
+.navbar-top_link.w-inline-block.w--current .navbar-top_icon {
+    opacity: 1;
+}
