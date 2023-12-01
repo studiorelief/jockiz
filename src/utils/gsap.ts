@@ -64,9 +64,9 @@ function cardsAnim() {
 function simpleAnim() {
   // Rotation effect
   gsap.set('.home-simple_cards-w.is-simple', { rotationX: 0, opacity: 1 });
-  gsap.set('.home-simple_cards-w.is-fun', { rotationX: 90, opacity: 0 });
-  gsap.set('.home-simple_cards-w.is-quotidien', { rotationX: 90, opacity: 0 });
-  gsap.set('.home-simple_cards-w.is-solidaire', { rotationX: 90, opacity: 0 });
+  gsap.set('.home-simple_cards-w.is-fun', { rotationX: -90, opacity: 0 });
+  gsap.set('.home-simple_cards-w.is-quotidien', { rotationX: -90, opacity: 0 });
+  gsap.set('.home-simple_cards-w.is-solidaire', { rotationX: -90, opacity: 0 });
 
   // SIMPLE
   const trigger2 = gsap.to('.home-simple_cards-w.is-simple', {
@@ -80,7 +80,6 @@ function simpleAnim() {
     rotationX: 90,
     duration: 2,
     ease: 'linear',
-    transformPerspective: 2000,
     transformOrigin: 'center',
     force3D: true,
   });
@@ -101,7 +100,7 @@ function simpleAnim() {
     onReverseComplete: () => {
       gsap.set('.home-simple_cards-w.is-fun', { opacity: 0 });
     },
-    rotationX: -90,
+    rotationX: 90,
     duration: 0.5,
     ease: 'ease',
     transformOrigin: 'center',
@@ -109,7 +108,7 @@ function simpleAnim() {
   });
 
   // QUOTIDIEN
-  const trigger3 = gsap.to('.home-simple_cards-w.is-quotidien', {
+  gsap.to('.home-simple_cards-w.is-quotidien', {
     scrollTrigger: {
       markers: true,
       trigger: '.section_home-simple',
@@ -123,14 +122,12 @@ function simpleAnim() {
     onReverseComplete: () => {
       gsap.set('.home-simple_cards-w.is-quotidien', { opacity: 0 });
     },
-    rotationX: -90,
+    rotationX: 90,
     duration: 2,
     ease: 'linear',
-    transformPerspective: 2000,
     transformOrigin: 'center',
     force3D: true,
   });
-  scrollTriggers.push(trigger3.scrollTrigger);
 
   // SOLIDAIRE
   gsap.to('.home-simple_cards-w.is-solidaire', {
@@ -150,7 +147,6 @@ function simpleAnim() {
     rotationX: 0,
     duration: 2,
     ease: 'linear',
-    transformPerspective: 2000,
     transformOrigin: 'center',
     force3D: true,
   });
@@ -160,7 +156,7 @@ function datasAnim() {
   // Loading effet datas
   gsap.set('.table_row', { opacity: 0, move: 16 });
 
-  const trigger4 = gsap.to('.table_row', {
+  const trigger3 = gsap.to('.table_row', {
     scrollTrigger: {
       markers: false,
       trigger: '.section_home-datas',
@@ -174,13 +170,13 @@ function datasAnim() {
     ease: 'linear',
     stagger: 0.25,
   });
-  scrollTriggers.push(trigger4.scrollTrigger);
+  scrollTriggers.push(trigger3.scrollTrigger);
 }
 
 function joinAnim() {
   gsap.set('.home-join_component', { width: '100%' });
 
-  const trigger5 = gsap.to('.home-join_component', {
+  const trigger4 = gsap.to('.home-join_component', {
     scrollTrigger: {
       markers: false,
       trigger: '.section_home-join',
@@ -192,7 +188,7 @@ function joinAnim() {
     duration: 10,
     ease: 'linear',
   });
-  scrollTriggers.push(trigger5.scrollTrigger);
+  scrollTriggers.push(trigger4.scrollTrigger);
 }
 
 export { cardsAnim, datasAnim, joinAnim, simpleAnim };
