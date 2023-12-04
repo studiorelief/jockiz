@@ -215,7 +215,7 @@ function rewardsAnim() {
 
 function datasAnim() {
   // Loading effet datas
-  gsap.set('.table_row', { opacity: 0, move: 16 });
+  gsap.set('.table_row', { opacity: 0, y: 8 });
 
   gsap.to('.table_row', {
     scrollTrigger: {
@@ -226,7 +226,7 @@ function datasAnim() {
       scrub: false,
     },
     opacity: 1,
-    move: 0,
+    y: 0,
     duration: 0.5,
     ease: 'linear',
     stagger: 0.25,
