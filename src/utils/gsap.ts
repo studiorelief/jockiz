@@ -4,13 +4,12 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 
 // Enregistrement du plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
-const scrollTriggers = [];
 
 function cardsAnim() {
   // Scale effect
   gsap.set('.home-cards_cards-img-front', { scale: 0, rotation: 0 });
 
-  const trigger1 = gsap.to('.home-cards_cards-img-front', {
+  gsap.to('.home-cards_cards-img-front', {
     scrollTrigger: {
       markers: false,
       trigger: '.section_home-cards',
@@ -22,7 +21,6 @@ function cardsAnim() {
     duration: 2,
     ease: 'linear',
   });
-  scrollTriggers.push(trigger1.scrollTrigger);
 
   // Rotation effect
   gsap.set('.home-cards_cards-img-front', { rotationY: 0 });
@@ -36,7 +34,7 @@ function cardsAnim() {
       end: '25% 25%',
       scrub: true,
     },
-    rotationY: 90,
+    rotationY: -90,
     duration: 2,
     ease: 'linear',
     transformOrigin: 'center',
@@ -47,15 +45,15 @@ function cardsAnim() {
     scrollTrigger: {
       markers: false,
       trigger: '.section_home-cards',
-      start: '25% 25%',
-      end: '50% 25%',
+      start: '10% 25%',
+      end: '35% 25%',
       scrub: true,
     },
     rotationY: 0,
     duration: 2,
     ease: 'linear',
     transformOrigin: 'center',
-    stagger: 0,
+    stagger: 1,
   });
 }
 
@@ -65,11 +63,12 @@ function simpleAnim() {
   gsap.set('.home-simple_cards-w.is-fun', { rotationX: -90, opacity: 0 });
   gsap.set('.home-simple_cards-w.is-quotidien', { rotationX: -90, opacity: 0 });
   gsap.set('.home-simple_cards-w.is-solidaire', { rotationX: -90, opacity: 0 });
+  gsap.set('.home-simple_stars', { y: '0vh' });
 
   // SIMPLE
-  const trigger2 = gsap.to('.home-simple_cards-w.is-simple', {
+  gsap.to('.home-simple_cards-w.is-simple', {
     scrollTrigger: {
-      markers: true,
+      markers: false,
       trigger: '.section_home-simple',
       start: '0% 75%',
       end: '25% 75%',
@@ -81,12 +80,11 @@ function simpleAnim() {
     transformOrigin: 'center',
     force3D: true,
   });
-  scrollTriggers.push(trigger2.scrollTrigger);
 
   // FUN
   gsap.to('.home-simple_cards-w.is-fun', {
     scrollTrigger: {
-      markers: true,
+      markers: false,
       trigger: '.section_home-simple',
       start: '25% 75%',
       end: '50% 75%',
@@ -108,7 +106,7 @@ function simpleAnim() {
   // QUOTIDIEN
   gsap.to('.home-simple_cards-w.is-quotidien', {
     scrollTrigger: {
-      markers: true,
+      markers: false,
       trigger: '.section_home-simple',
       start: '50% 75%',
       end: '75% 75%',
@@ -130,7 +128,7 @@ function simpleAnim() {
   // SOLIDAIRE
   gsap.to('.home-simple_cards-w.is-solidaire', {
     scrollTrigger: {
-      markers: true,
+      markers: false,
       trigger: '.section_home-simple',
       start: '75% 75%',
       end: '100% 75%',
@@ -148,17 +146,82 @@ function simpleAnim() {
     transformOrigin: 'center',
     force3D: true,
   });
+
+  // STARS
+  gsap.utils.toArray<Element>('.home-simple_stars').forEach((star) => {
+    // Lire la valeur de l'attribut speedScroll
+    const speedScroll = star.getAttribute('speedScroll');
+    let yValue: string;
+
+    // Ajuster la valeur de y en fonction de speedScroll
+    switch (speedScroll) {
+      case 'low':
+        yValue = '-50vh';
+        break;
+      case 'medium':
+        yValue = '-70vh';
+        break;
+      case 'quick':
+        yValue = '-90vh';
+        break;
+      default:
+        yValue = '-90vh';
+    }
+
+    // Animation GSAP pour chaque étoile
+    gsap.to(star, {
+      scrollTrigger: {
+        markers: false,
+        trigger: '.section_home-simple',
+        start: '15% 75%',
+        end: '100% 75%',
+        scrub: true,
+      },
+      y: yValue,
+      duration: 2,
+      ease: 'linear',
+      transformOrigin: 'center',
+      force3D: true,
+    });
+  });
+}
+
+function rewardsAnim() {
+  // Initialisation des propriétés
+  gsap.set('.home-rewards_image-cards-back', { rotationY: -90 });
+  gsap.set('.home-rewards_image-cards-front', { rotationY: -90 });
+
+  // Création d'une timeline
+  const tl = gsap.timeline({ repeat: -1 }); // repeat: -1 signifie une répétition infinie
+
+  // Animation de '.home-rewards_image-cards-back'
+  tl.to('.home-rewards_image-cards-back', {
+    rotationY: 90,
+    duration: 2,
+    ease: 'linear',
+    transformOrigin: 'center',
+    force3D: true,
+  });
+
+  // Animation de '.home-rewards_image-cards-front' après celle de '.home-rewards_image-cards-back'
+  tl.to('.home-rewards_image-cards-front', {
+    rotationY: 90,
+    duration: 3,
+    ease: 'linear',
+    transformOrigin: 'center',
+    force3D: true,
+  });
 }
 
 function datasAnim() {
   // Loading effet datas
   gsap.set('.table_row', { opacity: 0, move: 16 });
 
-  const trigger3 = gsap.to('.table_row', {
+  gsap.to('.table_row', {
     scrollTrigger: {
       markers: false,
       trigger: '.section_home-datas',
-      start: '0% 75%',
+      start: '25% 75%',
       end: '50% 75%',
       scrub: false,
     },
@@ -168,25 +231,6 @@ function datasAnim() {
     ease: 'linear',
     stagger: 0.25,
   });
-  scrollTriggers.push(trigger3.scrollTrigger);
 }
 
-function joinAnim() {
-  gsap.set('.home-join_component', { width: '100%' });
-
-  const trigger4 = gsap.to('.home-join_component', {
-    scrollTrigger: {
-      markers: false,
-      trigger: '.section_home-join',
-      start: '0% 75%',
-      end: '75% 75%',
-      scrub: true,
-    },
-    width: '50%',
-    duration: 10,
-    ease: 'linear',
-  });
-  scrollTriggers.push(trigger4.scrollTrigger);
-}
-
-export { cardsAnim, datasAnim, joinAnim, simpleAnim };
+export { cardsAnim, datasAnim, rewardsAnim, simpleAnim };
