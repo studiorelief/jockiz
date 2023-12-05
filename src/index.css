@@ -13,3 +13,41 @@
 .navbar-top_link.w-inline-block.w--current .navbar-top_icon {
     opacity: 1;
 }
+
+/* cards origin 3D */
+.home-cards_cards-img-front {
+    transform-origin: 50% 50% !important;
+}
+
+/* auto rotate tabs */
+@keyframes rotateCard {
+    from {
+      transform: perspective(75rem) translate3d(0, 0, 0) rotateY(-180deg);
+    }
+    to {
+      transform: perspective(75rem) translate3d(0, 0, 0) rotateY(0deg);
+    }
+}
+
+/* auto rotate tabs */
+@keyframes rotateCardInverse {
+    from {
+      transform: perspective(75rem) translate3d(0, 0, 0) rotateY(0deg);
+    }
+    to {
+      transform: perspective(75rem) translate3d(0, 0, 0) rotateY(180deg);
+    }
+}
+  
+.home-competitions_cards-front {
+    animation: rotateCard 1.5s ease;
+}
+
+.home-competitions_cards-back {
+    animation: rotateCardInverse 1.5s ease;
+}
+
+/* swiper linear loop */
+.swiper.is-jockeys .swiper-wrapper {
+    transition-timing-function: linear;
+}

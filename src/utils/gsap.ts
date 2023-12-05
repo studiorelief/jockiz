@@ -45,7 +45,7 @@ function cardsAnim() {
     scrollTrigger: {
       markers: false,
       trigger: '.section_home-cards',
-      start: '10% 25%',
+      start: '8% 25%',
       end: '35% 25%',
       scrub: true,
     },
@@ -156,13 +156,13 @@ function simpleAnim() {
     // Ajuster la valeur de y en fonction de speedScroll
     switch (speedScroll) {
       case 'low':
-        yValue = '-50vh';
+        yValue = '-90vh';
         break;
       case 'medium':
         yValue = '-70vh';
         break;
       case 'quick':
-        yValue = '-90vh';
+        yValue = '-50vh';
         break;
       default:
         yValue = '-90vh';
@@ -173,12 +173,12 @@ function simpleAnim() {
       scrollTrigger: {
         markers: false,
         trigger: '.section_home-simple',
-        start: '15% 75%',
-        end: '100% 75%',
+        start: '0% 75%',
+        end: '125% 75%',
         scrub: true,
       },
       y: yValue,
-      duration: 2,
+      duration: 4,
       ease: 'linear',
       transformOrigin: 'center',
       force3D: true,

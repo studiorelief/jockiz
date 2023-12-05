@@ -41,6 +41,7 @@
     "@finsweet/tsconfig": "^1.3.3",
     "@playwright/test": "^1.39.0",
     "@types/jquery": "^3.5.29",
+    "@types/swiper": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
     "cross-env": "^7.0.3",
@@ -55,7 +56,8 @@
   "dependencies": {
     "@finsweet/ts-utils": "^0.40.0",
     "gsap": "^3.12.3",
-    "jquery": "^3.7.1"
+    "jquery": "^3.7.1",
+    "swiper": "^11.0.5"
   },
   "engines": {
     "pnpm": ">=8"

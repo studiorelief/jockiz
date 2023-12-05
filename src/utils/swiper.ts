@@ -1,0 +1,40 @@
+import 'swiper/css/bundle';
+
+// @ts-expect-error : swiper bundle root
+import Swiper from 'swiper/bundle';
+
+function swiperJockeys() {
+  new Swiper('.swiper.is-jockeys', {
+    direction: 'horizontal',
+    grabCursor: true,
+    loop: true,
+    slidesPerView: 'auto',
+    spaceBetween: 30,
+    autoplay: {
+      delay: 0,
+      pauseOnMouseEnter: true,
+      disableOnInteraction: false,
+      reverseDirection: true,
+    },
+    speed: 1500,
+  });
+}
+
+function swiperPartnersLine(selector: string, reverseDirection: boolean) {
+  new Swiper(selector, {
+    direction: 'horizontal',
+    grabCursor: true,
+    loop: true,
+    slidesPerView: 'auto',
+    spaceBetween: 24,
+    autoplay: {
+      delay: 0,
+      pauseOnMouseEnter: true,
+      disableOnInteraction: true,
+      reverseDirection: reverseDirection,
+    },
+    speed: 2500,
+  });
+}
+
+export { swiperJockeys, swiperPartnersLine };
