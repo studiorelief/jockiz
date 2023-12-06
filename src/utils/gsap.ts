@@ -205,8 +205,25 @@ function rewardsAnim() {
 
   // Animation de '.home-rewards_image-cards-front' après celle de '.home-rewards_image-cards-back'
   tl.to('.home-rewards_image-cards-front', {
-    rotationY: 90,
+    rotationY: 0,
+    duration: 1,
+    ease: 'linear',
+    transformOrigin: 'center',
+    force3D: true,
+  });
+  // Animation de '.home-rewards_image-cards-front' après celle de '.home-rewards_image-cards-back'
+  tl.to('.home-rewards_image-cards-front', {
+    rotationY: 0,
     duration: 3,
+    ease: 'linear',
+    transformOrigin: 'center',
+    force3D: true,
+  });
+
+  // Animation de '.home-rewards_image-cards-front' après celle de '.home-rewards_image-cards-back'
+  tl.to('.home-rewards_image-cards-front', {
+    rotationY: 90,
+    duration: 1,
     ease: 'linear',
     transformOrigin: 'center',
     force3D: true,
