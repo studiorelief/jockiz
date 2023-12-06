@@ -7,13 +7,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 function cardsAnim() {
   // Scale effect
-  gsap.set('.home-cards_cards-img-front', { scale: 0, rotation: 0 });
+  gsap.set('.home-cards_cards-img-front', { scale: 0.3, rotation: 0 });
 
   gsap.to('.home-cards_cards-img-front', {
     scrollTrigger: {
       markers: false,
       trigger: '.section_home-cards',
-      start: '-25% 25%',
+      start: '-50% 25%',
       end: '10% 25%',
       scrub: true,
     },

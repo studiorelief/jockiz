@@ -14,7 +14,7 @@ function swiperJockeys() {
       delay: 0,
       pauseOnMouseEnter: true,
       disableOnInteraction: false,
-      reverseDirection: true,
+      reverseDirection: false,
     },
     speed: 1500,
   });
