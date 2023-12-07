@@ -29,7 +29,6 @@
     }
 }
 
-/* auto rotate tabs */
 @keyframes rotateCardInverse {
     from {
       transform: perspective(75rem) translate3d(0, 0, 0) rotateY(0deg);
@@ -50,4 +49,20 @@
 /* swiper linear loop */
 .swiper.is-jockeys .swiper-wrapper {
     transition-timing-function: linear;
+}
+
+@keyframes loadingCss {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.home-competitions_tab-link.w-inline-block.w-tab-link.w--current .home-competitions_load {
+    animation: loadingCss 3s ease;
+    /* Assurez-vous d'ajouter une propriété de largeur initiale et overflow hidden si nécessaire */
+    width: 0%;
+    overflow: hidden;
 }

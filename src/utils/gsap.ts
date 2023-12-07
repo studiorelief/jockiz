@@ -188,15 +188,34 @@ function simpleAnim() {
 
 function rewardsAnim() {
   // Initialisation des propriétés
-  gsap.set('.home-rewards_image-cards-back', { rotationY: -90 });
-  gsap.set('.home-rewards_image-cards-front', { rotationY: -90 });
+  gsap.set('.home-rewards_image-cards-back, .home-rewards_image-question-back', { rotationY: -90 });
+  gsap.set('.home-rewards_image-cards-front, .home-rewards_image-question-front', {
+    rotationY: -90,
+  });
 
   // Création d'une timeline
   const tl = gsap.timeline({ repeat: -1 }); // repeat: -1 signifie une répétition infinie
 
   // Animation de '.home-rewards_image-cards-back'
-  tl.to('.home-rewards_image-cards-back', {
+  tl.to('.home-rewards_image-cards-back, .home-rewards_image-question-back', {
     rotationY: 90,
+    duration: 0.8,
+    ease: 'linear',
+    transformOrigin: 'center',
+    force3D: true,
+  });
+
+  // Animation de '.home-rewards_image-cards-front' après celle de '.home-rewards_image-cards-back'
+  tl.to('.home-rewards_image-cards-front, .home-rewards_image-question-front', {
+    rotationY: 0,
+    duration: 0.4,
+    ease: 'linear',
+    transformOrigin: 'center',
+    force3D: true,
+  });
+  // Animation de '.home-rewards_image-cards-front' après celle de '.home-rewards_image-cards-back'
+  tl.to('.home-rewards_image-cards-front, .home-rewards_image-question-front', {
+    rotationY: 0,
     duration: 2,
     ease: 'linear',
     transformOrigin: 'center',
@@ -204,26 +223,9 @@ function rewardsAnim() {
   });
 
   // Animation de '.home-rewards_image-cards-front' après celle de '.home-rewards_image-cards-back'
-  tl.to('.home-rewards_image-cards-front', {
-    rotationY: 0,
-    duration: 1,
-    ease: 'linear',
-    transformOrigin: 'center',
-    force3D: true,
-  });
-  // Animation de '.home-rewards_image-cards-front' après celle de '.home-rewards_image-cards-back'
-  tl.to('.home-rewards_image-cards-front', {
-    rotationY: 0,
-    duration: 3,
-    ease: 'linear',
-    transformOrigin: 'center',
-    force3D: true,
-  });
-
-  // Animation de '.home-rewards_image-cards-front' après celle de '.home-rewards_image-cards-back'
-  tl.to('.home-rewards_image-cards-front', {
+  tl.to('.home-rewards_image-cards-front, .home-rewards_image-question-front', {
     rotationY: 90,
-    duration: 1,
+    duration: 0.4,
     ease: 'linear',
     transformOrigin: 'center',
     force3D: true,
