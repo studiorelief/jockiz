@@ -66,3 +66,24 @@
     width: 0%;
     overflow: hidden;
 }
+
+/* Animate border - No radius  */
+/* .home-join_component {
+    background-image: repeating-linear-gradient(180deg, #380868, #380868 1px, transparent 1px, transparent 5px, #380868 5px), repeating-linear-gradient(270deg, #380868, #380868 1px, transparent 1px, transparent 5px, #380868 5px), repeating-linear-gradient(0deg, #380868, #380868 1px, transparent 1px, transparent 5px, #380868 5px), repeating-linear-gradient(90deg, #380868, #380868 1px, transparent 1px, transparent 5px, #380868 5px);
+    background-size: 10px calc(100% + 5px), calc(100% + 5px) 10px, 10px calc(100% + 5px) , calc(100% + 5px) 10px;
+    background-position: 0 0, 0 0, 100% 0, 0 100%;
+    background-repeat: no-repeat;
+    animation: borderAnimation 0.4s infinite linear reverse;
+    border-radius: 1rem; 
+    mask-image: radial-gradient(white, black);
+}
+
+@keyframes borderAnimation {
+    from { background-position: 0 0, -5px 0, 100% -5px, 0 100%; }
+    to { background-position: 0 -5px, 0 0, 100% 0, -5px 100%; }
+}  */
+
+
+
+
+
