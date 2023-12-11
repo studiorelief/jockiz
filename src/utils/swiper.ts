@@ -10,13 +10,14 @@ function swiperJockeys() {
     loop: true,
     slidesPerView: 'auto',
     spaceBetween: 30,
+    centeredSlides: true,
     autoplay: {
       delay: 0,
-      pauseOnMouseEnter: true,
+      pauseOnMouseEnter: false,
       disableOnInteraction: false,
       reverseDirection: false,
     },
-    speed: 1500,
+    speed: 1750,
   });
 }
 
@@ -29,8 +30,8 @@ function swiperPartnersLine(selector: string, reverseDirection: boolean) {
     spaceBetween: 24,
     autoplay: {
       delay: 0,
-      pauseOnMouseEnter: true,
-      disableOnInteraction: true,
+      pauseOnMouseEnter: false,
+      disableOnInteraction: false,
       reverseDirection: reverseDirection,
     },
     speed: 2500,
