@@ -1,0 +1,72 @@
+/* navbar state */
+.navbar-top_icon {
+    opacity : 0 ;
+}
+
+.navbar-top_link:hover .navbar-top_icon {
+    opacity: 0.5;
+}
+
+.navbar-top_link.w-inline-block.w--current {
+    opacity: 1;
+}
+.navbar-top_link.w-inline-block.w--current .navbar-top_icon {
+    opacity: 1;
+}
+
+/* cards origin 3D */
+.home-cards_cards-img-front {
+    transform-origin: 50% 50% !important;
+}
+
+/* auto rotate tabs */
+@keyframes rotateCard {
+    from {
+      transform: perspective(75rem) translate3d(0, 0, 0) rotateY(-180deg);
+    }
+    to {
+      transform: perspective(75rem) translate3d(0, 0, 0) rotateY(0deg);
+    }
+}
+
+@keyframes rotateCardInverse {
+    from {
+      transform: perspective(75rem) translate3d(0, 0, 0) rotateY(0deg);
+    }
+    to {
+      transform: perspective(75rem) translate3d(0, 0, 0) rotateY(180deg);
+    }
+}
+  
+.home-competitions_cards-front {
+    animation: rotateCard 1.5s ease;
+}
+
+.home-competitions_cards-back {
+    animation: rotateCardInverse 1.5s ease;
+}
+
+/* swiper linear loop */
+.swiper.is-jockeys .swiper-wrapper {
+    transition-timing-function: linear;
+}
+
+@keyframes loadingCss {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.home-competitions_tab-link.w-inline-block.w-tab-link.w--current .home-competitions_load {
+    animation: loadingCss 3s ease;
+    /* Assurez-vous d'ajouter une propriété de largeur initiale et overflow hidden si nécessaire */
+    width: 0%;
+    overflow: hidden;
+}
+
+
+
+
