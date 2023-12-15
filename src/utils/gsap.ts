@@ -22,7 +22,7 @@ function cardsAnim() {
       scrub: true,
     },
     scale: 1,
-    duration: 2, // Utilisation de la variable duration
+    duration: 2,
     ease: 'linear',
   });
 
