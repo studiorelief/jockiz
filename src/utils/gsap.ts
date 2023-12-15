@@ -72,7 +72,7 @@ function simpleAnim() {
   // SIMPLE
   gsap.to('.home-simple_cards-w.is-simple', {
     scrollTrigger: {
-      markers: true,
+      markers: false,
       trigger: '.section_home-simple',
       start: '15% 75%',
       end: '25% 75%',
