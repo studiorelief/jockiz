@@ -6,6 +6,10 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 function cardsAnim() {
+  // Détection de la taille de l'écran pour ajuster la durée
+  const duration = window.innerWidth <= 768 ? 4 : 2;
+  const stagger = window.innerWidth <= 768 ? 2 : 1; // 4 secondes pour tablette et mobile, 2 secondes pour PC
+
   // Scale effect
   gsap.set('.home-cards_cards-img-front', { scale: 0.3, rotation: 0 });
 
@@ -18,7 +22,7 @@ function cardsAnim() {
       scrub: true,
     },
     scale: 1,
-    duration: 2,
+    duration: 2, // Utilisation de la variable duration
     ease: 'linear',
   });
 
@@ -35,10 +39,10 @@ function cardsAnim() {
       scrub: true,
     },
     rotationY: -90,
-    duration: 2,
+    duration: duration, // Utilisation de la variable duration
     ease: 'linear',
     transformOrigin: 'center',
-    stagger: 1,
+    stagger: stagger,
   });
 
   gsap.to('.home-cards_cards-img-back', {
@@ -50,10 +54,10 @@ function cardsAnim() {
       scrub: true,
     },
     rotationY: 0,
-    duration: 2,
+    duration: duration, // Utilisation de la variable duration
     ease: 'linear',
     transformOrigin: 'center',
-    stagger: 1,
+    stagger: stagger,
   });
 }
 
@@ -68,9 +72,9 @@ function simpleAnim() {
   // SIMPLE
   gsap.to('.home-simple_cards-w.is-simple', {
     scrollTrigger: {
-      markers: false,
+      markers: true,
       trigger: '.section_home-simple',
-      start: '0% 75%',
+      start: '15% 75%',
       end: '25% 75%',
       scrub: true,
     },

@@ -1,8 +1,8 @@
 function autoTabs(): void {
   // Fix for Safari
   if (navigator.userAgent.includes('Safari')) {
-    document.querySelectorAll('.home-competitions_tab-link').forEach((t: Element) => {
-      const tabButton = t as HTMLElement;
+    document.querySelectorAll('.home-competitions_tab-link').forEach((tabElement) => {
+      const tabButton = tabElement as HTMLElement;
       const originalFocus = tabButton.focus;
       tabButton.focus = function (options?: FocusOptions) {
         const x = window.scrollX;
@@ -18,21 +18,18 @@ function autoTabs(): void {
   }
 
   // Start Tabs
-  let tabTimeout: number | undefined = undefined;
+  let tabTimeout: number | undefined;
 
   const tabLoop = (): void => {
     tabTimeout = window.setTimeout(() => {
       const currentTab = document.querySelector(
         '.home-competitions_tabs-menu .w--current'
       ) as HTMLElement | null;
-
       let nextTab: HTMLElement | null = null;
 
       if (currentTab) {
         nextTab = currentTab.nextElementSibling as HTMLElement | null;
-
         currentTab.classList.remove('w--current');
-        // Retirer l'animation des autres cartes
         document.querySelectorAll('.home-competitions_cards-front').forEach((card) => {
           card.classList.remove('animate-rotate');
         });
@@ -46,12 +43,12 @@ function autoTabs(): void {
 
       if (nextTab) {
         nextTab.classList.add('w--current');
-        nextTab.click();
-        // Ajouter l'animation à la carte de l'onglet actuel
         const currentCardContent = nextTab.querySelector('.home-competitions_cards-front');
         if (currentCardContent) {
           currentCardContent.classList.add('animate-rotate');
         }
+        // Manually dispatch the click event and prevent it from propagating
+        nextTab.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
       }
     }, 3000);
   };
@@ -60,7 +57,8 @@ function autoTabs(): void {
 
   // Reset Loops
   document.querySelectorAll('.home-competitions_tab-link').forEach((button) => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (event) => {
+      event.stopPropagation(); // Prevent click event from propagating to other elements
       if (tabTimeout !== undefined) {
         clearTimeout(tabTimeout);
       }
