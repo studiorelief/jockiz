@@ -192,48 +192,93 @@ function simpleAnim() {
 
 function rewardsAnim() {
   // Initialisation des propriétés
-  gsap.set('.home-rewards_image-cards-back, .home-rewards_image-question-back', { rotationY: -90 });
-  gsap.set('.home-rewards_image-cards-front, .home-rewards_image-question-front', {
-    rotationY: -90,
-  });
+  gsap.set(
+    '.home-rewards_image-question-back, .home-rewards_image-question-front, .home-rewards_image-cards-back.is-first, .home-rewards_image-cards-back.is-second, .home-rewards_image-cards-back.is-third, .home-rewards_image-cards-front',
+    {
+      rotationY: -90,
+    }
+  );
 
-  // Création d'une timeline
-  const tl = gsap.timeline({ repeat: -1 }); // repeat: -1 signifie une répétition infinie
+  // Création de timelines
+  const tl = gsap.timeline({ repeat: -1 });
+  const tl2 = gsap.timeline({ repeat: -1 });
 
-  // Animation de '.home-rewards_image-cards-back'
-  tl.to('.home-rewards_image-cards-back, .home-rewards_image-question-back', {
+  // Timeline pour '.home-rewards_image-question-back' et '.home-rewards_image-question-front'
+  tl.to('.home-rewards_image-question-back', {
     rotationY: 90,
     duration: 0.8,
     ease: 'linear',
     transformOrigin: 'center',
     force3D: true,
-  });
+  })
+    .to('.home-rewards_image-question-front', {
+      rotationY: 0,
+      duration: 0.4,
+      ease: 'linear',
+      transformOrigin: 'center',
+      force3D: true,
+    })
+    .to('.home-rewards_image-question-front', {
+      rotationY: 0,
+      duration: 2,
+      ease: 'linear',
+      transformOrigin: 'center',
+      force3D: true,
+    })
+    .to('.home-rewards_image-question-front', {
+      rotationY: 90,
+      duration: 0.4,
+      ease: 'linear',
+      transformOrigin: 'center',
+      force3D: true,
+    });
 
-  // Animation de '.home-rewards_image-cards-front' après celle de '.home-rewards_image-cards-back'
-  tl.to('.home-rewards_image-cards-front, .home-rewards_image-question-front', {
-    rotationY: 0,
-    duration: 0.4,
-    ease: 'linear',
-    transformOrigin: 'center',
-    force3D: true,
+  // Configuration de tl2 avec des animations séquentielles pour chaque 'card-back'
+  ['is-first', 'is-second', 'is-third'].forEach((cardClass) => {
+    tl2.add(animateCard(`.home-rewards_image-cards-back.${cardClass}`)).add(animateFront(), '-=0'); // Commence l'animation du front un peu avant que celle du back se termine
   });
-  // Animation de '.home-rewards_image-cards-front' après celle de '.home-rewards_image-cards-back'
-  tl.to('.home-rewards_image-cards-front, .home-rewards_image-question-front', {
-    rotationY: 0,
-    duration: 2,
-    ease: 'linear',
-    transformOrigin: 'center',
-    force3D: true,
-  });
+}
 
-  // Animation de '.home-rewards_image-cards-front' après celle de '.home-rewards_image-cards-back'
-  tl.to('.home-rewards_image-cards-front, .home-rewards_image-question-front', {
-    rotationY: 90,
-    duration: 0.4,
-    ease: 'linear',
-    transformOrigin: 'center',
-    force3D: true,
-  });
+// Fonction pour animer chaque carte
+function animateCard(selector: string) {
+  return gsap
+    .timeline()
+    .to(selector, {
+      rotationY: 90,
+      duration: 0.8,
+      ease: 'linear',
+      transformOrigin: 'center',
+      force3D: true,
+    })
+    .to(selector, { rotationY: -90, duration: 0, immediateRender: false }); // Reset de l'animation pour la prochaine carte
+}
+
+// Fonction pour animer le front
+function animateFront() {
+  return gsap
+    .timeline()
+    .to('.home-rewards_image-cards-front', {
+      rotationY: 0,
+      duration: 0.4,
+      ease: 'linear',
+      transformOrigin: 'center',
+      force3D: true,
+    })
+    .to('.home-rewards_image-cards-front', {
+      rotationY: 0,
+      duration: 2,
+      ease: 'linear',
+      transformOrigin: 'center',
+      force3D: true,
+    })
+    .to('.home-rewards_image-cards-front', {
+      rotationY: 90,
+      duration: 0.4,
+      ease: 'linear',
+      transformOrigin: 'center',
+      force3D: true,
+    })
+    .set('.home-rewards_image-cards-front', { rotationY: -90 });
 }
 
 function datasAnim() {
