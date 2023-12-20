@@ -4,12 +4,15 @@ import 'swiper/css/bundle';
 import Swiper from 'swiper/bundle';
 
 function swiperJockeys() {
+  // Check if the device is mobile based on the screen width
+  const spaceBetweenValue = window.innerWidth <= 768 ? 24 : 30;
+
   new Swiper('.swiper.is-jockeys', {
     direction: 'horizontal',
     grabCursor: true,
     loop: true,
     slidesPerView: 'auto',
-    spaceBetween: 30,
+    spaceBetween: spaceBetweenValue, // variable
     centeredSlides: true,
     autoplay: {
       delay: 0,
