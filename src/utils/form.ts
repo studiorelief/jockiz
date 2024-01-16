@@ -6,9 +6,6 @@ function mirrorHero(): void {
 
   // Fonction pour configurer l'écouteur d'événements
   function setupClickListener(): void {
-    // Configuration pour #hero-form-trigger et #hero-form-target
-    setupClickEvent('#hero-form-trigger', '#hero-form-target');
-
     // Configuration pour #popup-form-trigger et #popup-form-target
     setupClickEvent('#popup-form-trigger', '#popup-form-target');
   }
